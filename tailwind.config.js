@@ -14,6 +14,11 @@ export default {
           ...fontFamily.sans
         ]
       },
+      colors: {
+        'primary-blue' : "#0049FF",
+        'primary-background' : "#1A1A1A",
+        'secondary-background' : "#141414"
+      }
     },
   },
   plugins: [],
