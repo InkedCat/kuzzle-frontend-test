@@ -1,16 +1,31 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router';
+import Navbar from './components/Navbar.vue';
+import { ref } from 'vue';
+
+const navbarLinks = ref([
+	{
+		to : "/",
+		desc: "Home"
+	},
+	{
+		to : "/chat",
+		desc: "Chat"
+	},
+	{
+		to : "/disconnect",
+		desc: "Disconnect"
+	}
+]);
 </script>
-
+	
 <template>
-  <header>
-    <img alt="App logo" src="@/assets/logo.svg" width="32" height="32" />
+  	<header class="fixed right-0 left-0 flex justify-center mx-auto my-0">
+		<Navbar :links="navbarLinks"></Navbar>
+  	</header>
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-  </header>
+	<main class="flex max-w-[1400px] mx-auto my-0 px-8 py-32 min-h-screen">
+		<RouterView />
+  	</main>
 
-  <RouterView />
 </template>
