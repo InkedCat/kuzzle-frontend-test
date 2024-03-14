@@ -1,0 +1,19 @@
+{
+  "name": "initdb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "tsc && node ./dist/app.js",
+    "dev": "tsx watch ./src/app.ts"
+  },
+  "author": "InkedCat",
+  "dependencies": {
+    "kuzzle-sdk": "^7.11.2"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.2"
+  }
+}
