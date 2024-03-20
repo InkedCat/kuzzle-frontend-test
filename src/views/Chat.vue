@@ -2,8 +2,10 @@
 import ChatBox from '@/components/ChatBox.vue';
 import MessageForm from '@/components/MessageForm.vue';
 import Signup from '@/components/Signup.vue';
+import type { APIMessage, ViewMessage } from '@/interfaces/Message';
 import { getMessages, postMessage } from '@/libs/ChatApi';
 import { setFlashMessage } from '@/libs/FlashStore';
+import { convertToMessage } from '@/libs/MessageTransformer';
 import axios from 'axios';
 import { Kuzzle } from 'kuzzle-sdk';
 import WebSocketProtocol from 'kuzzle-sdk/src/protocols/WebSocket';
@@ -19,6 +21,20 @@ async function initConnection() {
     client = new Kuzzle(new WebSocketProtocol('localhost'));
     await client.connect();
 
+    await client.realtime.subscribe('kuzzle-chatdb', 'chat-messages', {}, (notification) => {
+        if(notification.type !== 'document') return;
+        
+        switch(notification.action) {
+            case 'create':
+                messages.value.push(convertToMessage(notification.result._source as APIMessage));
+                break;
+            case 'publish':
+                if(notification.result._source.author === author.value) return;
+
+                setFlashMessage(notification.result._source.author + " has been rude !")
+                break;
+        }
+    });
 }
 
 async function submitMessage(message: string) {
