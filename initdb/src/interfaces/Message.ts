@@ -4,8 +4,7 @@ const MessageSchema : {mappings : CollectionMappings} = {
     mappings: {
         properties: {
             author: { type : "keyword" },
-            content: { type : "keyword" },
-            timestamp: { type : "date" }
+            content: { type : "keyword" }
         },
         dynamic: "strict",
     }

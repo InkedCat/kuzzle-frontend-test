@@ -29,8 +29,7 @@ async function run() {
 
 		const testMessage = {
 			"author": "Me",
-			"content": "Hello World !",
-			"timestamp": 1710441559
+			"content": "Hello World !"
 		};
 
 		await client.document.create(databaseName, collectionName, testMessage)
