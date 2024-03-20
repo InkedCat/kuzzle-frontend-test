@@ -50,7 +50,7 @@ async function submitMessage(message: string) {
 async function updateMessages() {
     try {
         const messageResponse = await getMessages();
-        console.log(messageResponse);
+        
         if(!axios.isAxiosError(messageResponse)) {
             messages.value = messageResponse
         }
