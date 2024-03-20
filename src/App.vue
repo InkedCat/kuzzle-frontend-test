@@ -30,7 +30,7 @@ const navbarLinks = ref([
 		<Navbar :links="navbarLinks"></Navbar>
   	</header>
 
-	<main class="flex max-w-[1400px] mx-auto my-0 px-8 py-32 min-h-screen">
+	<main class="flex max-w-[1400px] mx-auto my-0 px-8 py-32 h-screen">
 		<RouterView />
   	</main>
 
