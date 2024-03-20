@@ -11,10 +11,6 @@ const navbarLinks = ref([
 	{
 		to : "/chat",
 		desc: "Chat"
-	},
-	{
-		to : "/disconnect",
-		desc: "Disconnect"
 	}
 ]);
 </script>
