@@ -22,7 +22,7 @@ async function run() {
 		}
 	
 		await client.collection.create(databaseName, collectionName, MessageSchema);
-		console.log("Successfully created the database\n");
+		console.log("Successfully created the collection\n");
 
 		await client.realtime.subscribe(databaseName, collectionName, {}, messageNotifier);
 		console.log("Successfully subscribed to the collection events\n")
@@ -33,6 +33,7 @@ async function run() {
 		};
 
 		await client.document.create(databaseName, collectionName, testMessage)
+		console.log("Successfully created a message\n")
 	} catch (error) {
 		console.error(error);
 	} finally {
